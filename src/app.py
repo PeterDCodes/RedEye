@@ -12,7 +12,6 @@ style.theme_use('classic')
 style.configure("Custom.TButton", foreground = "white", background="black", borderwidth=0) 
 
 
-
 #create root frame widgets
 frame1 = ttk.Frame(root, padding=10, border=5, relief="solid")
 frame2 = ttk.Frame(root, padding=10, border=5, relief="solid")
@@ -64,9 +63,7 @@ ttk.Entry(frame2).grid(column=1,row=9)
 ttk.Button(frame2, text='Button10', command=root.destroy, style="Custom.TButton").grid(column=0, row=10)
 ttk.Entry(frame2).grid(column=1,row=10)
 
-ttk.Button(frame2, text='Object select').grid(column=0, row=11, columnspan=2)
-
-
+ttk.Label(frame2, text='Class Selection').grid(column=0, row=11, columnspan=2)
 
 
 #frame3
