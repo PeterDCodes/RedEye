@@ -54,7 +54,7 @@ ttk.Label(frame2A, text="Area Name").grid(column=1, row=0)
 button_count = 10 #will use this based on number of areas of interest allowed. Max 10??
 for i in range(button_count):
     ttk.Button(frame2A, text=f'Button{i + 1}', command=root.destroy, style="Custom.TButton").grid(column=0,row=i+1) #row is i+1 because title is at position 0 
-    ttk.Entry(frame2A).grid(column=1,row=i)
+    ttk.Entry(frame2A).grid(column=1,row=i+1)
 
 
 #class selection box in frame 2
