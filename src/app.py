@@ -8,22 +8,22 @@ root.title('RedEye')
 
 
 #create a frame widgets
-frame1 = ttk.Frame(root, padding=10)
-frame2 = ttk.Frame(root, padding=10)
-frame3 = ttk.Frame(root, padding=10)
-frame4 = ttk.Frame(root, padding=10)
+frame1 = ttk.Frame(root, padding=10, border=5, relief="solid")
+frame2 = ttk.Frame(root, padding=10, border=5, relief="solid")
+frame3 = ttk.Frame(root, padding=10, border=5, relief="solid")
+frame4 = ttk.Frame(root, padding=10, border=5, relief="solid")
 
 
 # Place the frames in a 2x2 grid
 frame1.grid(row=0, column=0, sticky="nsew")  # Top-left
-frame2.grid(row=0, column=1, sticky="ns")  # Top-right   #ns = north south. nsew means the frame will fill expand in all directions
+frame2.grid(row=0, column=1, sticky="nsew")  # Top-right   #ns = north south. nsew means the frame will fill expand in all directions
 frame3.grid(row=1, column=0, sticky="nsew")  # Bottom-left
-frame4.grid(row=1, column=1, sticky="ns")  # Bottom-right
+frame4.grid(row=1, column=1, sticky="nsew")  # Bottom-right
 
-# Configure the grid so that rows and columns are of equal size
-root.grid_rowconfigure(0, weight=1)
+# Configure the grid. the weight determines size of rows and columns
+root.grid_rowconfigure(0, weight=4)
 root.grid_rowconfigure(1, weight=1)
-root.grid_columnconfigure(0, weight=1)
+root.grid_columnconfigure(0, weight=4)
 root.grid_columnconfigure(1, weight=1)
 
 
@@ -48,6 +48,9 @@ ttk.Entry(frame2).grid(column=1,row=3)
 
 ttk.Button(frame2, text='Button4', command=root.destroy).grid(column=0, row=4)
 ttk.Entry(frame2).grid(column=1,row=4)
+
+ttk.Button(frame2, text='Object select').grid(column=0, row=5, columnspan=2)
+
 
 
 
