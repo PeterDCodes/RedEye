@@ -13,7 +13,6 @@ frame2 = ttk.Frame(root, padding=10, border=5, relief="solid")
 frame3 = ttk.Frame(root, padding=10, border=5, relief="solid")
 frame4 = ttk.Frame(root, padding=10, border=5, relief="solid")
 
-
 # Place the frames in a 2x2 grid
 frame1.grid(row=0, column=0, sticky="nsew")  # Top-left
 frame2.grid(row=0, column=1, sticky="nsew")  # Top-right   #ns = north south. nsew means the frame will fill expand in all directions
@@ -27,6 +26,12 @@ root.grid_columnconfigure(0, weight=4)
 root.grid_columnconfigure(1, weight=1)
 
 
+#styles
+style = ttk.Style()
+style.theme_use('default') #THEME HERE CAN BE USED LIKE .CSS !!!!!!!!!!!!!!!
+style.configure("Custom.TButton", foreground = "red", background="red")
+
+
 #items in frames-------
 
 #frame1
@@ -37,7 +42,7 @@ ttk.Label(frame1, text="Camera View Frame").grid(column=0, row=0)
 ttk.Label(frame2, text="Activate").grid(column=0, row=0)
 ttk.Label(frame2, text="Station Name").grid(column=1, row=0)
 
-ttk.Button(frame2, text='Button1', command=root.destroy).grid(column=0,row=1)
+ttk.Button(frame2, text='Button1', command=root.destroy, style="Custom.TButton").grid(column=0,row=1)
 ttk.Entry(frame2).grid(column=1,row=1)
 
 ttk.Button(frame2, text='Button2', command=root.destroy).grid(column=0, row=2)
