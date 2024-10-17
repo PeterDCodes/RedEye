@@ -1,0 +1,18 @@
+#header {
+    /* Your styles here */
+    background-color: #c92a28;
+    color: whitesmoke;
+    font-size: 24px;
+    text-align: left;
+    padding: 10px;
+}
+
+
+#content {
+    /* Your styles here */
+    background-color: lightgray;
+    color: black;
+    font-size: 24px;
+    text-align: left;
+    padding: 10px;
+}

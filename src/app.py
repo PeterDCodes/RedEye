@@ -16,7 +16,7 @@ def home_page():
 
 #page for creating new project
 @app.route("/new")
-def home_page():
+def new_page():
     return render_template('new.html')
 
     #user will need to enter all project information
@@ -26,7 +26,7 @@ def home_page():
 
 #app page for viewing project  MOST CODE WILL NEED TO BE HERE
 @app.route("/project")
-def home_page():
+def project_page():
     return render_template('project.html')
 
     #user can exit the project and return home

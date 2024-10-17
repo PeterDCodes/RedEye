@@ -1,1 +1,25 @@
-main page to create or select project
+<!--main page to create or select project-->
+
+
+<!--Can change this if additional header chnages are needed-->
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+
+<!--EDIT HERE-->
+{% block content %}
+    <h1 style="text-align: center;">Select or Create New Project</h1>
+    <div style="text-align: center;">
+        <button type="button">Create New</button>
+    </div>
+
+    <br><br>
+
+    <label for="projects">Select Current Project:</label>
+    <select id="projects" name="projects">
+        <option value="project1">Project 1</option>
+        <option value="project2">Project 2</option>
+        <option value="project3">Project 3</option>
+        <!-- Add more project options as needed -->
+    </select>
+
+{% endblock %}
