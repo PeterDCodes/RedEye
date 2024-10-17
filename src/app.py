@@ -8,7 +8,7 @@ root.title('RedEye')
 
 #styles of the application (This is like a .CSS file)
 style = ttk.Style()
-style.theme_use('classic')
+style.theme_use('aqua')
 style.configure("Custom.TButton", foreground = "white", background="black", borderwidth=0) 
 
 
