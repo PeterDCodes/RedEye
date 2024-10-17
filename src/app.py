@@ -1,6 +1,7 @@
+
 from tkinter import *
 from tkinter import ttk
-import sys
+
 
 #initialize application
 root = Tk()
