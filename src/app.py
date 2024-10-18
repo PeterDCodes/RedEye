@@ -36,7 +36,16 @@ root.grid_columnconfigure(1, weight=1)
 #------items in frames-------
 
 #frame1
-ttk.Label(frame1, text="Camera View Frame").grid(column=0, row=0)
+#create sub-frames within frame1
+frame1A = ttk.Frame(frame1, padding = 10, border=5, relief="solid")
+frame1B = ttk.Frame(frame1, padding = 10, border=5, relief="solid")
+
+#place sub-frames within frame2
+frame1A.grid(row=0, column=0, sticky="nsew")
+frame1B.grid(row=1, column=0, sticky="nsew")
+
+ttk.Label(frame1A, text="Camera Frame Title").grid(column=0, row=0)
+ttk.Label(frame1B, text="Camera View Frame").grid(column=0, row=0)
 
 
 #frame2
@@ -45,8 +54,8 @@ frame2A = ttk.Frame(frame2, padding = 10, border=5, relief="solid")
 frame2B = ttk.Frame(frame2, padding = 10, border=5, relief="solid")
 
 #place sub-frames within frame2
-frame2A.grid(row=0, column=0, sticky="nsew")  # Top-left
-frame2B.grid(row=1, column=0, sticky="nsew")  # Top-right
+frame2A.grid(row=0, column=0, sticky="nsew")
+frame2B.grid(row=1, column=0, sticky="nsew")
 
 #column titles
 ttk.Label(frame2A, text="Activate").grid(column=0, row=0)

@@ -26,7 +26,7 @@ def update_frame():
 # Initialize the main window
 root = tk.Tk()
 root.title("Video Stream")
-root.geometry("800x600")
+root.geometry("500x500")
 
 # Create a label to display the video
 video_label = ttk.Label(root)
