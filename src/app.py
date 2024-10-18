@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import ttk
 import cv2
 from PIL import Image, ImageTk
-import threading
 
 #initialize application
 root = Tk()
@@ -44,8 +43,52 @@ frame1B = ttk.Frame(frame1, padding = 10, border=5, relief="solid")
 frame1A.grid(row=0, column=0, sticky="nsew")
 frame1B.grid(row=1, column=0, sticky="nsew")
 
+
+
+#text in frame1 sub boxes
 ttk.Label(frame1A, text="Camera Frame Title").grid(column=0, row=0)
-ttk.Label(frame1B, text="Camera View Frame").grid(column=0, row=0)
+video_frame = ttk.Label(frame1B)
+video_frame.grid(row=0, column=0)
+
+
+#----------------------VIDEO FEATURE IN FRAME 1
+# Open video source (default is the webcam)
+cap = cv2.VideoCapture(0)
+
+# Get the original frame size
+original_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+original_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+# Calculate the aspect ratio
+aspect_ratio = original_width / original_height
+
+# Example: Shrink to a target width, calculate height to maintain aspect ratio
+TARGET_WIDTH = 900
+TARGET_HEIGHT = int(TARGET_WIDTH / aspect_ratio)
+
+#Function to update video frame
+def update_frame():
+        ret, frame = cap.read()  # Capture frame-by-frame
+        if ret:
+            #resize the frame
+            frame_resized=cv2.resize(frame, (TARGET_WIDTH, TARGET_HEIGHT))
+            # Convert the frame to a format Tkinter can display
+            frame_rgb = cv2.cvtColor(frame_resized, cv2.COLOR_BGR2RGB)
+            img = Image.fromarray(frame_rgb)
+            imgtk = ImageTk.PhotoImage(image=img)
+
+            # Update the image in the label
+            video_frame.imgtk = imgtk
+            video_frame.configure(image=imgtk)
+
+            # Update the image in the label
+            video_frame.imgtk = imgtk  # Keep a reference to avoid garbage collection
+            video_frame.config(image=imgtk)
+
+        # Schedule the next update
+        video_frame.after(15, update_frame)  # Update every 15 ms
+
+update_frame()
 
 
 #frame2
@@ -86,7 +129,6 @@ ttk.Label(frame4, text="Data Export Frame").grid(column=0, row=0)
 ttk.Button(frame4, text="Export as .csv").grid(column=0, row=1)
 
 
-
-
-
 root.mainloop()
+
+cap.release()
