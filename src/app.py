@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import cv2
 from PIL import Image, ImageTk
+from helpers import update_frame
 
 #initialize application
 root = Tk()
@@ -51,22 +52,27 @@ video_frame = ttk.Label(frame1B)
 video_frame.grid(row=0, column=0)
 
 
-#----------------------VIDEO FEATURE IN FRAME 1
-# Open video source (default is the webcam)
+# #----------------------VIDEO FEATURE IN FRAME 1
+# # Open video source (default is the webcam)
 cap = cv2.VideoCapture(0)
 
-# Get the original frame size
+# # Get the original frame size
 original_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 original_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
-# Calculate the aspect ratio
+# # Calculate the aspect ratio
 aspect_ratio = original_width / original_height
 
-# Example: Shrink to a target width, calculate height to maintain aspect ratio
-TARGET_WIDTH = 900
+#Example: Shrink to a target width, calculate height to maintain aspect ratio
+#Should set target width to be the current width of the frame?????
+root.update()
+width = video_frame.winfo_width()
+print(f'WIDTH {width}')
+TARGET_WIDTH = 200 * width  
+print(TARGET_WIDTH)
 TARGET_HEIGHT = int(TARGET_WIDTH / aspect_ratio)
 
-#Function to update video frame in tkinter app
+# #Function to update video frame in tkinter app
 def update_frame():
         ret, frame = cap.read()  # Capture frame-by-frame
         if ret:
