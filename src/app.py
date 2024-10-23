@@ -10,7 +10,7 @@ root.title('RedEye')
 
 #styles of the application (This is like a .CSS file)
 style = ttk.Style()
-style.theme_use('aqua')
+style.theme_use('alt') #NEED TO FIX THIS BASED ON OS. MAC can use AQUA but windows can not!!!!!
 style.configure("Custom.TButton", foreground = "white", background="black", borderwidth=0) 
 
 
@@ -22,7 +22,7 @@ frame4 = ttk.Frame(root, padding=10, border=5, relief="solid")
 
 # Place the frames in a 2x2 grid
 frame1.grid(row=0, column=0, sticky="nsew")  # Top-left
-frame2.grid(row=0, column=1, sticky="nsew")  # Top-right   #ns = north south. nsew means the frame will fill expand in all directions
+frame2.grid(row=0, column=1, sticky="nsew")  # Top-right   #ns = north south. nsew means the frame will fill expand in all directions?
 frame3.grid(row=1, column=0, sticky="nsew")  # Bottom-left
 frame4.grid(row=1, column=1, sticky="nsew")  # Bottom-right
 
@@ -111,6 +111,7 @@ frame2C.grid(row=3, column=0, sticky="nsew")
 #column titles
 ttk.Label(frame2A, text="Activate").grid(column=0, row=0)
 ttk.Label(frame2A, text="Area Name").grid(column=1, row=0)
+ttk.Label(frame2B, text='Class Selection').grid(column=0, row=0, columnspan=2)
 ttk.Label(frame2C, text="Object Editor").grid(column=0, row=2)
 
 #list of buttons and entrys in frame 2. uses loop to add all the items
@@ -121,9 +122,8 @@ for i in range(button_count):
 
 
 #class selection box in frame 2
-ttk.Label(frame2B, text='Class Selection').grid(column=0, row=0, columnspan=2)
 #use a loop to add checkboxed based on list of objects
-objects = ['class1', 'class2', 'class3', 'class4', 'class5']  #temporary list of classes will want to pull from vision model list of classes
+objects = ['stap', 'PCBA', 'cell', 'pack', 'Fixture']  #temporary list of classes will want to pull from vision model list of classes
 for i, object in enumerate(objects):
     ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1)
 
