@@ -4,6 +4,12 @@ import cv2
 from PIL import Image, ImageTk
 from helpers import update_frame
 
+def my_function(arg):
+    print(f"Button pressed: {arg}")
+    # Additional logic based on `arg`
+
+
+
 #initialize application
 root = Tk()
 root.title('RedEye')
@@ -143,7 +149,7 @@ ttk.Label(frame2C, text="Object Editor").grid(column=0, row=2)
 #list of buttons and entrys in frame 2. uses loop to add all the items
 button_count = 10 #will use this based on number of areas of interest allowed. Max 10??
 for i in range(button_count):
-    ttk.Button(frame2A, text=f'Button{i + 1}', command=root.destroy, style="Custom.TButton").grid(column=0,row=i+1, sticky="nsew") #row is i+1 because title is at position 0 
+    ttk.Button(frame2A, text=f'Button{i + 1}', command=lambda arg=f'Button{i + 1}': my_function(arg), style="Custom.TButton").grid(column=0,row=i+1, sticky="nsew") #row is i+1 because title is at position 0 
     ttk.Entry(frame2A).grid(column=1,row=i+1)
 
 
