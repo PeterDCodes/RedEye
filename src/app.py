@@ -87,7 +87,6 @@ aspect_ratio = original_width / original_height
 window_width = root.winfo_width()
 widget_width = frame1B.winfo_width()
 #Should set target width to be the current width of the frame?????
-root.update()
 TARGET_WIDTH = 250 * widget_width  
 TARGET_HEIGHT = int(TARGET_WIDTH / aspect_ratio)
 
