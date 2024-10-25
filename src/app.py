@@ -8,6 +8,8 @@ from helpers import update_frame
 root = Tk()
 root.title('RedEye')
 
+#root.iconbitmap('path to .ico file') USE THIS TO SET AN APP ICON
+
 #styles of the application (This is like a .CSS file)
 style = ttk.Style()
 style.theme_use('alt') #NEED TO FIX THIS BASED ON OS. MAC can use AQUA but windows can not!!!!!
@@ -33,6 +35,8 @@ root.grid_columnconfigure(0, weight=4)
 root.grid_columnconfigure(1, weight=1)
 
 
+
+
 #------items in frames-------
 
 #frame1
@@ -40,16 +44,31 @@ root.grid_columnconfigure(1, weight=1)
 frame1A = ttk.Frame(frame1, padding = 10, border=5, relief="solid")
 frame1B = ttk.Frame(frame1, padding = 10, border=5, relief="solid")
 
-#place sub-frames within frame2
+# Configure weight for frame1 sub-frames
+frame1.grid_rowconfigure(0, weight=1) #says the first row of frame 1 will have weight 1
+frame1.grid_rowconfigure(1, weight=4) #says the seconds row of frame 1 will have weight 4
+frame1.grid_columnconfigure(0, weight=1) #says the column (only 1) in frame 1 will have weight 1
+
+#place sub-frames within frame1
 frame1A.grid(row=0, column=0, sticky="nsew")
 frame1B.grid(row=1, column=0, sticky="nsew")
 
+# Configure the grid for frame1A and frame1B
+frame1A.grid_rowconfigure(0, weight=1)
+frame1A.grid_columnconfigure(0, weight=1)
+frame1B.grid_rowconfigure(0, weight=1)
+frame1B.grid_columnconfigure(0, weight=1)
 
 
 #text in frame1 sub boxes
-ttk.Label(frame1A, text="Camera Frame Title").grid(column=0, row=0)
+camera_frame_label = ttk.Label(frame1A, text="Camera Frame Title")
+camera_frame_label.grid(column=0, row=0, sticky="nsew")
+
 video_frame = ttk.Label(frame1B)
 video_frame.grid(row=0, column=0)
+video_frame.grid_rowconfigure(0, weight=1)
+video_frame.grid_columnconfigure(0, weight=1)
+
 
 
 # #----------------------VIDEO FEATURE IN FRAME 1
@@ -64,12 +83,12 @@ original_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 aspect_ratio = original_width / original_height
 
 #Example: Shrink to a target width, calculate height to maintain aspect ratio
+# Get the width of the window and the frame widget
+window_width = root.winfo_width()
+widget_width = frame1B.winfo_width()
 #Should set target width to be the current width of the frame?????
 root.update()
-width = video_frame.winfo_width()
-print(f'WIDTH {width}')
-TARGET_WIDTH = 200 * width  
-print(TARGET_WIDTH)
+TARGET_WIDTH = 250 * widget_width  
 TARGET_HEIGHT = int(TARGET_WIDTH / aspect_ratio)
 
 # #Function to update video frame in tkinter app
@@ -117,7 +136,7 @@ ttk.Label(frame2C, text="Object Editor").grid(column=0, row=2)
 #list of buttons and entrys in frame 2. uses loop to add all the items
 button_count = 10 #will use this based on number of areas of interest allowed. Max 10??
 for i in range(button_count):
-    ttk.Button(frame2A, text=f'Button{i + 1}', command=root.destroy, style="Custom.TButton").grid(column=0,row=i+1) #row is i+1 because title is at position 0 
+    ttk.Button(frame2A, text=f'Button{i + 1}', command=root.destroy, style="Custom.TButton").grid(column=0,row=i+1, sticky="nsew") #row is i+1 because title is at position 0 
     ttk.Entry(frame2A).grid(column=1,row=i+1)
 
 
