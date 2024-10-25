@@ -151,7 +151,7 @@ for i in range(button_count):
 #use a loop to add checkboxed based on list of objects
 objects = ['stap', 'PCBA', 'cell', 'pack', 'Fixture']  #temporary list of classes will want to pull from vision model list of classes
 for i, object in enumerate(objects):
-    ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1)
+    ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1, sticky="nsew")
 
 
 #frame3
