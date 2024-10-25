@@ -121,10 +121,18 @@ frame2A = ttk.Frame(frame2, padding = 10, border=5, relief="solid")
 frame2B = ttk.Frame(frame2, padding = 10, border=5, relief="solid")
 frame2C = ttk.Frame(frame2, padding = 10, border = 5, relief="solid")
 
+#frame2 grid configure for dynamic resizing
+frame2.grid_rowconfigure(0, weight=1)
+frame2.grid_rowconfigure(1, weight=1)
+frame2.grid_rowconfigure(2, weight=1)
+frame2.grid_columnconfigure(0, weight=1)
+
+
+
 #place sub-frames within frame2
 frame2A.grid(row=0, column=0, sticky="nsew")
 frame2B.grid(row=1, column=0, sticky="nsew")
-frame2C.grid(row=3, column=0, sticky="nsew")
+frame2C.grid(row=2, column=0, sticky="nsew")
 
 #column titles
 ttk.Label(frame2A, text="Activate").grid(column=0, row=0)
