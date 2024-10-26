@@ -141,7 +141,7 @@ frame2B.grid(row=1, column=0, sticky="nsew")
 frame2C.grid(row=2, column=0, sticky="nsew")
 
 #column titles
-ttk.Label(frame2A, text="Activate").grid(column=0, row=0)
+ttk.Label(frame2A, text="Set-Area").grid(column=0, row=0)
 ttk.Label(frame2A, text="Area Name").grid(column=1, row=0)
 ttk.Label(frame2B, text='Class Selection').grid(column=0, row=0, columnspan=2)
 ttk.Label(frame2C, text="Object Editor").grid(column=0, row=2)
@@ -161,14 +161,20 @@ for i, object in enumerate(objects):
 
 
 #frame3
-ttk.Label(frame3, text="Camera Manager Frame").grid(column=0, row=0)
-ttk.Button(frame3, text="Camera Config Button").grid(column=0, row=1)
+ttk.Label(frame3, text="Camera Manager Frame").grid(column=0, row=0, sticky="nsew")
+ttk.Button(frame3, text="Camera Config Button").grid(column=0, row=1, sticky="nsew")
+frame3.grid_columnconfigure(0,weight=1)
+frame3.grid_rowconfigure(0,weight=1)
+frame3.grid_rowconfigure(1,weight=1)
+
 
 
 #frame4
-ttk.Label(frame4, text="Data Export Frame").grid(column=0, row=0)
-ttk.Button(frame4, text="Export as .csv").grid(column=0, row=1)
-
+ttk.Label(frame4, text="Data Export Frame").grid(column=0, row=0, sticky="nsew")
+ttk.Button(frame4, text="Export as .csv").grid(column=0, row=1, sticky="nsew")
+frame4.grid_columnconfigure(0,weight=1)
+frame4.grid_rowconfigure(0,weight=1)
+frame4.grid_rowconfigure(1,weight=1)
 
 root.mainloop()
 
