@@ -2,11 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import cv2
 from PIL import Image, ImageTk
-from helpers import update_frame
-
-def my_function(arg):
-    print(f"Button pressed: {arg}")
-    # Additional logic based on `arg`
+from helpers import my_function
 
 
 
