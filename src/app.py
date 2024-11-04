@@ -15,6 +15,8 @@ root.title('RedEye')
 #styles of the application (This is like a .CSS file)
 style = ttk.Style()
 style.theme_use('alt') #NEED TO FIX THIS BASED ON OS. MAC can use AQUA but windows can not!!!!!
+#title text style
+style.configure("Title.TLabel", font=('Arial Black', 24))
 #button style
 style.configure("Custom.TButton", foreground = "white", background="black", borderwidth=0)
 #heading style
@@ -66,7 +68,7 @@ frame1B.grid_columnconfigure(0, weight=1)
 
 
 #text for camaera frame title in frame1 sub box
-ttk.Label(frame1A, text="Camera Frame Title", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
+ttk.Label(frame1A, text="Camera Frame Title", anchor=CENTER, style="Title.TLabel").grid(column=0, row=0, sticky="nsew")
 
 
 
