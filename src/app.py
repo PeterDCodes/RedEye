@@ -62,9 +62,10 @@ frame1B.grid_rowconfigure(0, weight=1)
 frame1B.grid_columnconfigure(0, weight=1)
 
 
-#text in frame1 sub boxes
-camera_frame_label = ttk.Label(frame1A, text="Camera Frame Title")
-camera_frame_label.grid(column=0, row=0, sticky="nsew")
+#text for camaera frame title in frame1 sub box
+ttk.Label(frame1A, text="Camera Frame Title", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
+
+
 
 video_frame = ttk.Label(frame1B)
 video_frame.grid(row=0, column=0)
@@ -164,7 +165,7 @@ frame2C.grid_rowconfigure(0,weight=1)
 frame2C.grid_rowconfigure(1,weight=1)
 
 #frame3
-ttk.Label(frame3, text="Camera Manager Frame").grid(column=0, row=0, sticky="nsew")
+ttk.Label(frame3, text="Camera Manager Frame", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
 ttk.Button(frame3, text="Camera Config Button").grid(column=0, row=1, sticky="nsew")
 frame3.grid_columnconfigure(0,weight=1)
 frame3.grid_rowconfigure(0,weight=1)
@@ -173,7 +174,7 @@ frame3.grid_rowconfigure(1,weight=1)
 
 
 #frame4
-ttk.Label(frame4, text="Data Export Frame").grid(column=0, row=0, sticky="nsew")
+ttk.Label(frame4, text="Data Export Frame", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
 ttk.Button(frame4, text="Export as .csv").grid(column=0, row=1, sticky="nsew")
 frame4.grid_columnconfigure(0,weight=1)
 frame4.grid_rowconfigure(0,weight=1)
