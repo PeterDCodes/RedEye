@@ -139,6 +139,7 @@ frame2C.grid(row=2, column=0, sticky="nsew")
 #column titles
 ttk.Label(frame2A, text="Set-Area").grid(column=0, row=0)
 ttk.Label(frame2A, text="Area Name").grid(column=1, row=0)
+ttk.Label(frame2A, text="Coordinates", justify=CENTER).grid(column=2, row=0)
 ttk.Label(frame2B, text='Class Selection').grid(column=0, row=0, columnspan=2)
 ttk.Label(frame2C, text="Object Editor").grid(column=0, row=2)
 
