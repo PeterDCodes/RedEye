@@ -9,6 +9,7 @@ from helpers import my_function
 #initialize application
 root = Tk()
 root.title('RedEye')
+root.geometry("1200x800")
 
 #root.iconbitmap('path to .ico file') USE THIS TO SET AN APP ICON
 
