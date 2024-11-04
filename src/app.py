@@ -15,7 +15,10 @@ root.title('RedEye')
 #styles of the application (This is like a .CSS file)
 style = ttk.Style()
 style.theme_use('alt') #NEED TO FIX THIS BASED ON OS. MAC can use AQUA but windows can not!!!!!
-style.configure("Custom.TButton", foreground = "white", background="black", borderwidth=0) 
+#button style
+style.configure("Custom.TButton", foreground = "white", background="black", borderwidth=0)
+#heading style
+style.configure("Heading.TLabel", font=('Arial Black', 12))
 
 
 #create root frame widgets
@@ -140,9 +143,9 @@ frame2C.grid(row=2, column=0, sticky="nsew")
 #column titles
 ttk.Label(frame2A, text="Set-Area").grid(column=0, row=0)
 ttk.Label(frame2A, text="Area Name").grid(column=1, row=0)
-ttk.Label(frame2A, text="Coordinates", justify=CENTER).grid(column=2, row=0)
+ttk.Label(frame2A, text="Coordinates").grid(column=2, row=0)
 ttk.Label(frame2B, text='Class Selection').grid(column=0, row=0, columnspan=2)
-ttk.Label(frame2C, text="Object Editor").grid(column=0, row=0)
+ttk.Label(frame2C, text="Object Editor", style='Heading.TLabel').grid(column=0, row=0)
 
 #list of buttons, name entrys, and coordinate displays in frame 2. uses loop to add all the items
 button_count = 10 #will use this based on number of areas of interest allowed. Max 10??
@@ -159,13 +162,13 @@ for i, object in enumerate(objects):
     ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1, sticky="nsew")
 
 #model selection for frame 2
-ttk.Button(frame2C, text="Selection Vision Model").grid(column=0, row=1, sticky="nsew")
+ttk.Button(frame2C, text="Select Vision Model").grid(column=0, row=1, sticky="nsew")
 frame2C.grid_columnconfigure(0,weight=1)
 frame2C.grid_rowconfigure(0,weight=1)
 frame2C.grid_rowconfigure(1,weight=1)
 
 #frame3
-ttk.Label(frame3, text="Camera Manager Frame", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
+ttk.Label(frame3, text="Camera Manager", style="Heading.TLabel", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
 ttk.Button(frame3, text="Camera Config Button").grid(column=0, row=1, sticky="nsew")
 frame3.grid_columnconfigure(0,weight=1)
 frame3.grid_rowconfigure(0,weight=1)
@@ -174,7 +177,7 @@ frame3.grid_rowconfigure(1,weight=1)
 
 
 #frame4
-ttk.Label(frame4, text="Data Export Frame", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
+ttk.Label(frame4, text="Start Data Export", anchor=CENTER, style="Heading.TLabel").grid(column=0, row=0, sticky="nsew")
 ttk.Button(frame4, text="Export as .csv").grid(column=0, row=1, sticky="nsew")
 frame4.grid_columnconfigure(0,weight=1)
 frame4.grid_rowconfigure(0,weight=1)
