@@ -141,7 +141,7 @@ ttk.Label(frame2A, text="Set-Area").grid(column=0, row=0)
 ttk.Label(frame2A, text="Area Name").grid(column=1, row=0)
 ttk.Label(frame2A, text="Coordinates", justify=CENTER).grid(column=2, row=0)
 ttk.Label(frame2B, text='Class Selection').grid(column=0, row=0, columnspan=2)
-ttk.Label(frame2C, text="Object Editor").grid(column=0, row=2)
+ttk.Label(frame2C, text="Object Editor").grid(column=0, row=0)
 
 #list of buttons, name entrys, and coordinate displays in frame 2. uses loop to add all the items
 button_count = 10 #will use this based on number of areas of interest allowed. Max 10??
@@ -157,6 +157,11 @@ objects = ['stap', 'PCBA', 'cell', 'pack', 'Fixture']  #temporary list of classe
 for i, object in enumerate(objects):
     ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1, sticky="nsew")
 
+#model selection for frame 2
+ttk.Button(frame2C, text="Selection Vision Model").grid(column=0, row=1, sticky="nsew")
+frame2C.grid_columnconfigure(0,weight=1)
+frame2C.grid_rowconfigure(0,weight=1)
+frame2C.grid_rowconfigure(1,weight=1)
 
 #frame3
 ttk.Label(frame3, text="Camera Manager Frame").grid(column=0, row=0, sticky="nsew")
