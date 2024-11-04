@@ -143,11 +143,12 @@ ttk.Label(frame2A, text="Coordinates", justify=CENTER).grid(column=2, row=0)
 ttk.Label(frame2B, text='Class Selection').grid(column=0, row=0, columnspan=2)
 ttk.Label(frame2C, text="Object Editor").grid(column=0, row=2)
 
-#list of buttons and entrys in frame 2. uses loop to add all the items
+#list of buttons, name entrys, and coordinate displays in frame 2. uses loop to add all the items
 button_count = 10 #will use this based on number of areas of interest allowed. Max 10??
 for i in range(button_count):
     ttk.Button(frame2A, text=f'Button{i + 1}', command=lambda arg=f'Button{i + 1}': my_function(arg), style="Custom.TButton").grid(column=0,row=i+1, sticky="nsew") #row is i+1 because title is at position 0 
     ttk.Entry(frame2A).grid(column=1,row=i+1)
+    ttk.Label(frame2A, text="coordinates need to go here").grid(column=2, row=i+1)
 
 
 #class selection box in frame 2
