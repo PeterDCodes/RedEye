@@ -28,7 +28,7 @@ style.configure("Heading.TLabel", font=('Arial Black', 12))
 
 #create root frame widgets
 frame1 = ttk.Frame(root, padding=10, border=5, relief="solid")
-frame2 = ttk.Frame(root, padding=10, border=5, relief="solid")
+frame2 = ttk.Frame(root, padding=0, border=5, relief="solid")
 frame3 = ttk.Frame(root, padding=10, border=5, relief="solid")
 frame4 = ttk.Frame(root, padding=10, border=5, relief="solid")
 
@@ -107,8 +107,14 @@ def update_frame():
         if ret:
             # Get the current size of frame1B
             frame1B.update_idletasks()
-            frame1b_width = frame1B.winfo_width()
             frame1b_height = frame1B.winfo_height()
+
+            TARGET_HEIGHT = frame1b_height
+            if(TARGET_HEIGHT > 200):
+                 TARGET_HEIGHT = TARGET_HEIGHT - 150
+            TARGET_WIDTH = int(TARGET_HEIGHT * aspect_ratio)
+
+
             #resize the frame
             frame_resized=cv2.resize(frame, (TARGET_WIDTH, TARGET_HEIGHT))
             # Convert the frame to a format Tkinter can display
@@ -125,7 +131,7 @@ def update_frame():
             video_frame.config(image=imgtk)
 
         # Schedule the next update
-        video_frame.after(15, update_frame)  # Update every 15 ms
+        video_frame.after(10, update_frame)  # Update every 10 ms
 
 update_frame()
 
