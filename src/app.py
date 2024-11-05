@@ -2,8 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import cv2
 from PIL import Image, ImageTk
-from helpers import my_function
-
+from helpers import my_function, change_model
 
 
 #initialize application
@@ -24,6 +23,12 @@ style.configure("Small.TButton", foreground = "white", background="black", borde
 style.configure("Large.TButton", foreground = "Black", background="Red", borderwidth=2, font=('Arial Black', 12))
 #heading style
 style.configure("Heading.TLabel", font=('Arial Black', 12))
+
+#initialize Applications Variables
+# Initialize the model as a StringVar
+model = StringVar(value='No Model')
+print(model.get())
+
 
 
 #create root frame widgets
@@ -172,12 +177,13 @@ for i in range(button_count):
 
 #class selection box in frame 2
 #use a loop to add checkboxed based on list of objects
-objects = ['stap', 'PCBA', 'cell', 'pack', 'Fixture']  #temporary list of classes will want to pull from vision model list of classes
-for i, object in enumerate(objects):
-    ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1, sticky="nsew")
+if model != "No Model":
+    objects = ['stap', 'PCBA', 'cell', 'pack', 'Fixture']  #temporary list of classes will want to pull from vision model list of classes
+    for i, object in enumerate(objects):
+        ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1, sticky="nsew")
 
 #model selection for frame 2
-ttk.Button(frame2C, text="Select Vision Model", style="Large.TButton").grid(column=0, row=1, sticky="nsew")
+ttk.Button(frame2C, text="Select Vision Model", style="Large.TButton", command = lambda:change_model(model)).grid(column=0, row=1, sticky="nsew")
 frame2C.grid_columnconfigure(0,weight=1)
 frame2C.grid_rowconfigure(0,weight=1)
 frame2C.grid_rowconfigure(1,weight=1)
