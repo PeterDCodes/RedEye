@@ -18,8 +18,10 @@ style = ttk.Style()
 style.theme_use('alt') #NEED TO FIX THIS BASED ON OS. MAC can use AQUA but windows can not!!!!!
 #title text style
 style.configure("Title.TLabel", font=('Arial Black', 24))
-#button style
-style.configure("Custom.TButton", foreground = "white", background="black", borderwidth=0)
+#small button style
+style.configure("Small.TButton", foreground = "white", background="black", borderwidth=0)
+#large button style
+style.configure("Large.TButton", foreground = "Black", background="Red", borderwidth=2, font=('Arial Black', 12))
 #heading style
 style.configure("Heading.TLabel", font=('Arial Black', 12))
 
@@ -103,6 +105,10 @@ TARGET_HEIGHT = int(TARGET_WIDTH / aspect_ratio)
 def update_frame():
         ret, frame = cap.read()  # Capture frame-by-frame
         if ret:
+            # Get the current size of frame1B
+            frame1B.update_idletasks()
+            frame1b_width = frame1B.winfo_width()
+            frame1b_height = frame1B.winfo_height()
             #resize the frame
             frame_resized=cv2.resize(frame, (TARGET_WIDTH, TARGET_HEIGHT))
             # Convert the frame to a format Tkinter can display
@@ -153,7 +159,7 @@ ttk.Label(frame2C, text="Object Editor", style='Heading.TLabel').grid(column=0, 
 #list of buttons, name entrys, and coordinate displays in frame 2. uses loop to add all the items
 button_count = 10 #will use this based on number of areas of interest allowed. Max 10??
 for i in range(button_count):
-    ttk.Button(frame2A, text=f'Button{i + 1}', command=lambda arg=f'Button{i + 1}': my_function(arg), style="Custom.TButton").grid(column=0,row=i+1, sticky="nsew") #row is i+1 because title is at position 0 
+    ttk.Button(frame2A, text=f'Button{i + 1}', command=lambda arg=f'Button{i + 1}': my_function(arg), style="Small.TButton").grid(column=0,row=i+1, sticky="nsew") #row is i+1 because title is at position 0 
     ttk.Entry(frame2A).grid(column=1,row=i+1)
     ttk.Label(frame2A, text="coordinates need to go here").grid(column=2, row=i+1)
 
@@ -165,14 +171,14 @@ for i, object in enumerate(objects):
     ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1, sticky="nsew")
 
 #model selection for frame 2
-ttk.Button(frame2C, text="Select Vision Model").grid(column=0, row=1, sticky="nsew")
+ttk.Button(frame2C, text="Select Vision Model", style="Large.TButton").grid(column=0, row=1, sticky="nsew")
 frame2C.grid_columnconfigure(0,weight=1)
 frame2C.grid_rowconfigure(0,weight=1)
 frame2C.grid_rowconfigure(1,weight=1)
 
 #frame3
 ttk.Label(frame3, text="Camera Manager", style="Heading.TLabel", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
-ttk.Button(frame3, text="Camera Config Button").grid(column=0, row=1, sticky="nsew")
+ttk.Button(frame3, text="Camera Config Button", style="Large.TButton").grid(column=0, row=1, sticky="nsew")
 frame3.grid_columnconfigure(0,weight=1)
 frame3.grid_rowconfigure(0,weight=1)
 frame3.grid_rowconfigure(1,weight=1)
@@ -181,7 +187,7 @@ frame3.grid_rowconfigure(1,weight=1)
 
 #frame4
 ttk.Label(frame4, text="Start Data Export", anchor=CENTER, style="Heading.TLabel").grid(column=0, row=0, sticky="nsew")
-ttk.Button(frame4, text="Export as .csv").grid(column=0, row=1, sticky="nsew")
+ttk.Button(frame4, text="Export as .csv", style="Large.TButton").grid(column=0, row=1, sticky="nsew")
 frame4.grid_columnconfigure(0,weight=1)
 frame4.grid_rowconfigure(0,weight=1)
 frame4.grid_rowconfigure(1,weight=1)
