@@ -175,15 +175,26 @@ for i in range(button_count):
     ttk.Label(frame2A, text="coordinates need to go here").grid(column=2, row=i+1)
 
 
-#class selection box in frame 2
-#use a loop to add checkboxed based on list of objects
-if model != "No Model":
-    objects = ['stap', 'PCBA', 'cell', 'pack', 'Fixture']  #temporary list of classes will want to pull from vision model list of classes
-    for i, object in enumerate(objects):
-        ttk.Checkbutton(frame2B, text = object). grid(column = 0, row = i+1, sticky="nsew")
+
+#function to update the checkboxes in frame 2B for class selection. NEED TO MIGRATE TO HELPERS FILE
+def update_checkboxes():
+    # Clear existing checkboxes below row 0
+    for widget in frame2B.winfo_children():
+        info = widget.grid_info()
+        if info['row'] > 0:
+            widget.destroy()
+    
+    #class selection box in frame 2
+    #use a loop to add checkboxed based on list of objects
+    # Check the value of the model and update checkboxes
+    if model.get() == "Updated Value":
+        objects = ['stap', 'PCBA', 'cell', 'pack', 'Fixture']  # Temporary list of classes
+        for i, obj in enumerate(objects):
+            ttk.Checkbutton(frame2B, text=obj).grid(column=0, row=i+1, sticky="nsew")
 
 #model selection for frame 2
-ttk.Button(frame2C, text="Select Vision Model", style="Large.TButton", command = lambda:change_model(model)).grid(column=0, row=1, sticky="nsew")
+ttk.Button(frame2C, text="Select Vision Model", style="Large.TButton",
+           command = lambda: (change_model(model), update_checkboxes(), print(model.get()))).grid(column=0, row=1, sticky="nsew") #frame 2B is updated since it contains the object classes derrived from a model
 frame2C.grid_columnconfigure(0,weight=1)
 frame2C.grid_rowconfigure(0,weight=1)
 frame2C.grid_rowconfigure(1,weight=1)

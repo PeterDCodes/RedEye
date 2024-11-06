@@ -7,3 +7,5 @@ def my_function(arg):
 def change_model(model):
     model.set("Updated Value")
     print("Variable updated to:", model.get())
+
+
