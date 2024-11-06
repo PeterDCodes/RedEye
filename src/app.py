@@ -201,7 +201,7 @@ frame2C.grid_rowconfigure(1,weight=1)
 
 #frame3
 ttk.Label(frame3, text="Camera Manager", style="Heading.TLabel", anchor=CENTER).grid(column=0, row=0, sticky="nsew")
-ttk.Button(frame3, text="Camera Config Button", style="Large.TButton").grid(column=0, row=1, sticky="nsew")
+ttk.Button(frame3, text="Select Camera", style="Large.TButton").grid(column=0, row=1, sticky="nsew")
 frame3.grid_columnconfigure(0,weight=1)
 frame3.grid_rowconfigure(0,weight=1)
 frame3.grid_rowconfigure(1,weight=1)
