@@ -210,7 +210,7 @@ frame3.grid_rowconfigure(1,weight=1)
 
 #frame4
 ttk.Label(frame4, text="Start Data Export", anchor=CENTER, style="Heading.TLabel").grid(column=0, row=0, sticky="nsew")
-ttk.Button(frame4, text="Export as .csv", style="Large.TButton").grid(column=0, row=1, sticky="nsew")
+ttk.Button(frame4, text="Activate", style="Large.TButton").grid(column=0, row=1, sticky="nsew")  #want this to turn green when clicked
 frame4.grid_columnconfigure(0,weight=1)
 frame4.grid_rowconfigure(0,weight=1)
 frame4.grid_rowconfigure(1,weight=1)
