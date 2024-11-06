@@ -9,3 +9,9 @@ def change_model(model):
     print("Variable updated to:", model.get())
 
 
+#function for opening files
+# import filedialog module
+from tkinter import filedialog
+def browseFiles():
+    filename = filedialog.askopenfilename(initialdir = "/", title = "Select a File", filetypes = (("Text files","*.txt*"), ("all files", "*.*")))
+    print('hi')

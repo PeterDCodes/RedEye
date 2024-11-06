@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import cv2
 from PIL import Image, ImageTk
-from helpers import my_function, change_model
+from helpers import my_function, change_model, browseFiles
 
 
 #initialize application
@@ -194,7 +194,7 @@ def update_checkboxes():
 
 #model selection for frame 2
 ttk.Button(frame2C, text="Select Vision Model", style="Large.TButton",
-           command = lambda: (change_model(model), update_checkboxes(), print(model.get()))).grid(column=0, row=1, sticky="nsew") #frame 2B is updated since it contains the object classes derrived from a model
+           command = lambda: (browseFiles())).grid(column=0, row=1, sticky="nsew") #frame 2B is updated since it contains the object classes derrived from a model
 frame2C.grid_columnconfigure(0,weight=1)
 frame2C.grid_rowconfigure(0,weight=1)
 frame2C.grid_rowconfigure(1,weight=1)
